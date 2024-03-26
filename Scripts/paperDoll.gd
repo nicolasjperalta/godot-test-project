@@ -3,6 +3,8 @@ extends Node
 @onready var chestSprite = $chest
 @onready var weaponSprite = $weapon
 @onready var headSprite = $head
+
+
 func _on_inventory_item_picked_up(itemData : ItemData):
 	match itemData.type:
 		"chest":
@@ -19,4 +21,16 @@ func _on_inventory_item_picked_up(itemData : ItemData):
 			headSprite.visible = true
 			
 			
+	pass # Replace with function body.
+
+
+func _on_inventory_item_dropped(ItemData, pos):
+	match ItemData.type:
+		"chest":
+			chestSprite.visible = false
+		"weapon":
+			weaponSprite.visible = false
+		"head":
+			headSprite.visible = false
+
 	pass # Replace with function body.

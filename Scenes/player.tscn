@@ -32,28 +32,29 @@ shape = SubResource("RectangleShape2D_2voaa")
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("3_qt86c")
 
-[node name="Node" type="Node2D" parent="."]
+[node name="PaperDoll" type="Node2D" parent="."]
 script = ExtResource("5_6i64j")
 
-[node name="weapon" type="Sprite2D" parent="Node"]
+[node name="weapon" type="Sprite2D" parent="PaperDoll"]
 visible = false
 position = Vector2(-11, -6)
 texture = ExtResource("2_ufd4c")
 region_enabled = true
 region_rect = Rect2(608, 224, 12, 24)
 
-[node name="head" type="Sprite2D" parent="Node"]
+[node name="head" type="Sprite2D" parent="PaperDoll"]
 visible = false
 position = Vector2(0, -16)
 texture = ExtResource("2_ufd4c")
 region_enabled = true
 region_rect = Rect2(816, 296, 20, 8)
 
-[node name="chest" type="Sprite2D" parent="Node"]
+[node name="chest" type="Sprite2D" parent="PaperDoll"]
 visible = false
 position = Vector2(0, 1)
 texture = ExtResource("2_ufd4c")
 region_enabled = true
 region_rect = Rect2(840, 360, 16, 16)
 
-[connection signal="item_picked_up" from="Inventory" to="Node" method="_on_inventory_item_picked_up"]
+[connection signal="item_dropped" from="Inventory" to="PaperDoll" method="_on_inventory_item_dropped"]
+[connection signal="item_picked_up" from="Inventory" to="PaperDoll" method="_on_inventory_item_picked_up"]

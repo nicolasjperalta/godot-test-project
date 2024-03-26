@@ -26,6 +26,9 @@ func _process(delta):
 		if Input.is_action_just_pressed("attack"):
 			_attack()    
 
+	if Input.is_action_just_pressed("use"):
+		inventory.drop_last_item()
+
 	if forceY != 0:
 		player_mob.velocity.y = forceY * speed * delta
 	elif forceX != 0:
