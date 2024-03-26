@@ -7,5 +7,7 @@ extends Resource
 @export var spritePosition: Vector2 = Vector2(0,0)
 @export var health : int = 0
 @export var attack : int = 0
+@export var armor : int = 0
 @export var weight: int = 0
 @export var type : String = "generic"
+@export var stackSize : int = 1

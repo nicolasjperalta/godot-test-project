@@ -1,54 +1,75 @@
 class_name Inventory
 extends Node
 
-@export var items : Array[ItemData] = []
+
+class InventorySlot:
+	var item : ItemData
+	var count : int
+
+
+var slots : Array[InventorySlot] = []
 @onready var map_items = get_parent().get_parent().get_node("map_items")
 @onready var player = get_parent()
 
 signal item_picked_up
-
-func findItemByType(itemType : String) -> ItemData:
-    for item in items:
-        if item.type == itemType:
-            return item
-    return null
-
-func add_item(item : ItemData):
-    var found = findItemByType(item.type)
-
-    if found and found.type != "generic":
-        items.erase(found)
-        map_items.spawn_item(found, player.position + Vector2(40,0))
-        
-    items.append(item)
-    emit_signal("item_picked_up", item)
+signal item_dropped
 
 
-func remove_item(item : ItemData):
-    items.erase(item)
-    
-func pop_item() -> ItemData:
-    var item = items[0]
-    items.remove_at(0)
-    return item
+func getSlotByType(type : String) -> InventorySlot:
+	for slot in slots:
+		if slot.item.type == type and slot.count < slot.item.stackSize:
+			return slot
+	return null
 
-func get_items() -> Array[ItemData]:
-    return items
+
+func add_item(itemData : ItemData):
+	var slot = getSlotByType(itemData.type)
+	if slot != null and slot.count < slot.item.stackSize:
+		slot.count += 1
+	else:
+		slots.append(InventorySlot.new())
+		slots[-1].item = itemData
+		slots[-1].count = 1
+	emit_signal("item_picked_up", itemData)
+
+
+func remove_item(itemData : ItemData):
+	var slot = getSlotByType(itemData.type)
+	if slot != null:
+		if slot.count > 1:
+			slot.count -= 1
+		else:
+			slots.erase(slot)
+	emit_signal("item_dropped", itemData)
 
 func get_health() -> int:
-    var total = 0
-    for item in items:
-        total += item.health
-    return total
+	var health = 0
+	for slot in slots:
+		health += slot.item.health
+	return health
 
 func get_attack() -> int:
-    var total = 0
-    for item in items:
-        total += item.attack
-    return total
+	var attack = 0
+	for slot in slots:
+		attack += slot.item.attack
+	return attack
 
-func get_weight() -> int:
-    var total = 0
-    for item in items:
-        total += item.weight
-    return total
+func get_armor() -> int:
+	var armor = 0
+	for slot in slots:
+		armor += slot.item.armor
+	return armor
+
+
+func get_item_count(itemData : ItemData) -> int:
+	var slot = getSlotByType(itemData.type)
+	if slot != null:
+		return slot.count
+	return 0
+
+func get_item_count_by_type(type : String) -> int:
+	var count = 0
+	for slot in slots:
+		if slot.item.type == type:
+			count += slot.count
+	return count
