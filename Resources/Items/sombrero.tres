@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://b27emrcxldyq1"]
+
+[ext_resource type="Script" path="res://Scripts/item_data.gd" id="1_amu3m"]
+
+[resource]
+script = ExtResource("1_amu3m")
+name = "Sombrero"
+description = ""
+spriteRec = Rect2(816, 296, 20, 8)
+spritePosition = Vector2(0, -16)
+health = 25
+attack = 0
+weight = 0
+type = "head"

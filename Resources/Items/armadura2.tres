@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://c6417tk8kb3hj"]
+
+[ext_resource type="Script" path="res://Scripts/item_data.gd" id="1_csfxb"]
+
+[resource]
+script = ExtResource("1_csfxb")
+name = "Armadura 1"
+description = ""
+spriteRec = Rect2(840, 360, 16, 16)
+spritePosition = Vector2(0, 1)
+health = 100
+attack = 0
+weight = 0
+type = "chest"

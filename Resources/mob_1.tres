@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="MobData" load_steps=2 format=3 uid="uid://b3wak46sfmqgt"]
+
+[ext_resource type="Script" path="res://Scripts/mob_data.gd" id="1_m5cct"]
+
+[resource]
+script = ExtResource("1_m5cct")
+spriteRec = Rect2(484, 320, 24, 32)
+health = 100
+attackDamage = 0

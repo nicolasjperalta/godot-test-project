@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bak7dmyfiqqj8"]
+
+[ext_resource type="Texture2D" uid="uid://belf7rlrlh2t6" path="res://mobs.png" id="1_jac0a"]
+[ext_resource type="Script" path="res://Scripts/item.gd" id="1_ty68a"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yahor"]
+radius = 16.0
+
+[node name="Item" type="Area2D"]
+collision_layer = 2
+script = ExtResource("1_ty68a")
+
+[node name="sprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_jac0a")
+region_enabled = true
+region_rect = Rect2(840, 360, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yahor")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

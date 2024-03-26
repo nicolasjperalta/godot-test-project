@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://bur81uisode2d"]
+
+[ext_resource type="Script" path="res://Scripts/item_data.gd" id="1_38ct5"]
+
+[resource]
+script = ExtResource("1_38ct5")
+name = "Armadura 2"
+description = ""
+spriteRec = Rect2(936, 360, 16, 20)
+spritePosition = Vector2(0, 3)
+health = 100
+attack = 0
+weight = 0
+type = "chest"

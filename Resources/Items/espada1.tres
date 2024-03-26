@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=2 format=3 uid="uid://pin4py00ebid"]
+
+[ext_resource type="Script" path="res://Scripts/item_data.gd" id="1_rtajx"]
+
+[resource]
+script = ExtResource("1_rtajx")
+name = "Espada"
+description = ""
+spriteRec = Rect2(608, 224, 12, 24)
+spritePosition = Vector2(-11, -6)
+health = 0
+attack = 15
+weight = 0
+type = "weapon"
