@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://ecowh3xsnbo7"]
+[gd_scene load_steps=14 format=3 uid="uid://ecowh3xsnbo7"]
 
 [ext_resource type="Script" path="res://Scripts/WorldManager.gd" id="1_2xkt0"]
 [ext_resource type="Texture2D" uid="uid://cy7uroclv26r8" path="res://mapset.png" id="1_kbvyu"]
+[ext_resource type="Script" path="res://Scripts/map_items.gd" id="2_at8h2"]
 [ext_resource type="PackedScene" uid="uid://22yr8iys5up0" path="res://Scenes/player.tscn" id="2_m5qyi"]
 [ext_resource type="Resource" uid="uid://bur81uisode2d" path="res://Resources/Items/armadura.tres" id="3_6gdp1"]
 [ext_resource type="Resource" uid="uid://c6417tk8kb3hj" path="res://Resources/Items/armadura2.tres" id="4_5cl6d"]
@@ -6558,6 +6559,7 @@ layer_2/name = "object"
 layer_2/tile_data = PackedInt32Array()
 
 [node name="map_items" type="Node2D" parent="."]
+script = ExtResource("2_at8h2")
 
 [node name="Item" parent="map_items" instance=ExtResource("4_uvvgf")]
 position = Vector2(-19, -94)
@@ -6581,9 +6583,17 @@ itemData = ExtResource("7_ga2ec")
 position = Vector2(-77, -95)
 
 [node name="mob" parent="mobs" instance=ExtResource("4_ri2kx")]
-position = Vector2(323, 141)
+position = Vector2(77, 95)
 mobData = ExtResource("5_8hago")
 
 [node name="mob2" parent="mobs" instance=ExtResource("4_ri2kx")]
-position = Vector2(-5, 208)
+position = Vector2(114, 139)
+mobData = ExtResource("5_8hago")
+
+[node name="mob3" parent="mobs" instance=ExtResource("4_ri2kx")]
+position = Vector2(191, 132)
+mobData = ExtResource("5_8hago")
+
+[node name="mob4" parent="mobs" instance=ExtResource("4_ri2kx")]
+position = Vector2(259, 143)
 mobData = ExtResource("5_8hago")

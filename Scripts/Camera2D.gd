@@ -3,7 +3,7 @@ extends Camera2D
 @onready var player_mob = $".."
 @onready var raycast = $"../RayCast2D"
 @onready var inventory : Inventory = $"../Inventory"
-
+var health = 100
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -35,6 +35,7 @@ func _process(delta):
 		player_mob.velocity.x = forceX * speed * delta
 		
 	player_mob.move_and_slide()
+	
 
 func _attack():
 	# check if raycast is colliding with body and if its mob call take damage
@@ -43,3 +44,8 @@ func _attack():
 		if raycast.get_collider().is_in_group("mobs"):
 			raycast.get_collider().take_damage(inventory.get_attack())
 
+func take_damage(damage):
+	health -= damage
+	print(damage)
+	if health <= 0:
+		queue_free()

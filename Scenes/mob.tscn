@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://bf5dwqk78v7lr"]
+[gd_scene load_steps=8 format=3 uid="uid://bf5dwqk78v7lr"]
 
 [ext_resource type="Script" path="res://Scripts/mob.gd" id="1_o7a7x"]
 [ext_resource type="Shader" path="res://Shaders/flash.gdshader" id="2_dpft8"]
@@ -11,6 +11,10 @@ shader_parameter/flash_color = Color(0.627451, 0.0235294, 0, 1)
 shader_parameter/flash_modifier = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0cewm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wfhaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_coplc"]
 
 [node name="mob" type="CharacterBody2D" groups=["mobs"]]
 collision_layer = 8
@@ -40,4 +44,22 @@ offset_bottom = -11.0
 scale = Vector2(0.477165, 0.436409)
 text = "100"
 
+[node name="Sight" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sight"]
+scale = Vector2(15, 15)
+shape = SubResource("CircleShape2D_wfhaf")
+
+[node name="AttackRange" type="Area2D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackRange"]
+scale = Vector2(3.335, 3.335)
+shape = SubResource("CircleShape2D_coplc")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Sight" to="." method="_on_sight_body_entered"]
+[connection signal="body_exited" from="Sight" to="." method="_on_sight_body_exited"]
+[connection signal="body_entered" from="AttackRange" to="." method="_on_attack_range_body_entered"]
+[connection signal="body_exited" from="AttackRange" to="." method="_on_attack_range_body_exited"]

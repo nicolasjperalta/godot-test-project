@@ -6,4 +6,4 @@
 script = ExtResource("1_m5cct")
 spriteRec = Rect2(484, 320, 24, 32)
 health = 100
-attackDamage = 0
+attackDamage = 5
